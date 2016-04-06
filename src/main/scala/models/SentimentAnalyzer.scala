@@ -12,3 +12,12 @@ trait SentimentAnalyzer[T] {
     sentiments.sortBy(sentimentScore)(sentimentOrdering)
   }
 }
+case object AbsoluteValueSentimentAnalyzer extends SentimentAnalyzer[Int] {
+  override def sentimentScore: (Int) => Int = Math.abs
+
+  override val sentimentOrdering: Ordering[Int] = Ordering.Int.reverse
+}
+
+object SentimentAnalyzer {
+  def absoluteValueAnalyzer = AbsoluteValueSentimentAnalyzer
+}
