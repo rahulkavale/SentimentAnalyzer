@@ -12,7 +12,6 @@ class BucketizerTest extends Specification {
 
       val buckets: List[ListBuffer[Int]] = Bucketizer.apply(List(5, 1, 3, 5, 2), 6, identityFunction)
 
-      println(buckets)
       buckets.size mustEqual 6
       buckets.head.size mustEqual 0
       buckets(5).size mustEqual 2

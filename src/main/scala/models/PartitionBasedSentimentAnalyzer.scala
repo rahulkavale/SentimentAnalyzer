@@ -30,10 +30,10 @@ object PartitionBasedSentimentAnalyzer extends SentimentAnalyzer[Int] {
     }
   }
 
-  def getTopNElements(xs: List[Int], k: Int) = {
+  def getTopNElements(sentiments: List[Int], k: Int) = {
     val TOTAL_BUCKETS = 6
 
-    val buckets = Bucketizer.apply(xs, TOTAL_BUCKETS, sentimentScore)
+    val buckets = Bucketizer.apply(sentiments, TOTAL_BUCKETS, sentimentScore)
 
     getTopNElementsRec(0, k, TOTAL_BUCKETS - 1, Nil, buckets)
   }
